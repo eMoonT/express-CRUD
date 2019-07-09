@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>后台管理-user</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <nav class=" navbar-default navbar-fixed-top">
+        <div class=" container">
+            <div class=" navbar-header">
+                <button class=" navbar-toggle" data-toggle="collapse" data-target=" .navbar-collapse">
+                    <span class=" icon-bar"></span>
+                    <span class=" icon-bar"></span>
+                    <span class=" icon-bar"></span>
+                </button>
+                <a href="#" class=" navbar-brand">麦子后台管理</a>
+            </div>
+
+            <div class=" collapse navbar-collapse">
+                <ul class=" nav navbar-nav navbar-left">
+                    <li><a href="index.html"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;后台首页</a></li>
+                    <li class=" active"><a href="user.html"><span
+                                class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;用户管理</a></li>
+                    <li><a href="content.html"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;内容管理</a>
+                    </li>
+                    <li><a href="tag.html"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;标签管理</a></li>
+                </ul>
+                <ul class=" nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="true">
+                            admin
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="bootstrap后台管理.html">前台首页</a></li>
+                            <li><a href="bootstrap后台管理.html">个人主页</a></li>
+                            <li><a href="bootstrap后台管理.html">个人设置</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="bootstrap后台管理.html">账户中心</a></li>
+                            <li><a href="bootstrap后台管理.html">我的收藏</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class=" container">
+        <div class=" row">
+            <div class=" col-md-2">
+                <div class=" list-group">
+                    <a class=" list-group-item" href="user.html">用户管理</a>
+                    <a class=" list-group-item active" href="user.html">用户搜索</a>
+                    <!-- <a class=" list-group-item" href="user-add.html">添加用户</a> -->
+                    <a href="" role="button" class=" list-group-item" data-toggle="modal"
+                        data-target="#myModal">添加用户</a>
+                </div>
+            </div>
+            <div class=" col-md-10">
+                <div class="page-header">
+                    <h1>用户搜索</h1>
+                </div>
+                <div class=" nav nav-tabs">
+                    <li class=" active"><a href="#">用户搜索</a></li>
+                </div>
+                <form class="search-user" action="#">
+                    <div class=" alert alert-info" role="alert">
+                        <strong>技巧提示：</strong>
+                        支持模糊搜索和匹配搜索，匹配搜索使用*代替
+                    </div>
+                    <div class=" form-group">
+                        <label for="name">用户名</label>
+                        <input type="text" id="name" class="form-control" placeholder="请输入用户名">
+                    </div>
+                    <div class=" form-group">
+                        <label for="uid">UID</label>
+                        <input type="text" id="uid" class=" form-control" placeholder="请输入密码">
+                    </div>
+                    <div class=" form-group">
+                        <label for="user-group">选择用户组</label>
+                        <select class=" form-control" id="user-group">
+                            <option>限制会员</option>
+                            <option>新手上路</option>
+                            <option>注册会员</option>
+                            <option>中级会员</option>
+                            <option>高级会员</option>
+                        </select>
+                    </div>
+                    <button type="submit" class=" btn btn-default">提交</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">添加用户</h4>
+                </div>
+                <div class="modal-body">
+                    <div class=" form-group">
+                        <label for="nameAdd">用户名</label>
+                        <input type="text" class=" form-control" placeholder="请输入用户名">
+                    </div>
+                    <div class=" form-group">
+                        <label for="passwordAdd">密码</label>
+                        <input type="password" class=" form-control" placeholder="请输入密码">
+                    </div>
+                    <div class=" form-group">
+                        <label for="passwordAd1">确认密码</label>
+                        <input type="password" class=" form-control" placeholder="请再次输入密码">
+                    </div>
+                    <div class=" form-group">
+                        <label for="emailAdd">邮箱</label>
+                        <input type="email" class=" form-control" placeholder="请输入邮箱">
+                    </div>
+                    <div class=" form-group">
+                        <label for="user-group">选择用户组</label>
+                        <select class=" form-control" id="user-group">
+                            <option>限制会员</option>
+                            <option>新手上路</option>
+                            <option>注册会员</option>
+                            <option>中级会员</option>
+                            <option>高级会员</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">保存</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</body>
+
+</html>

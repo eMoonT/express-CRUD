@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>后台管理-user</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <nav class=" navbar-default navbar-fixed-top">
+        <div class=" container">
+            <div class=" navbar-header">
+                <button class=" navbar-toggle" data-toggle="collapse" data-target=" .navbar-collapse">
+                    <span class=" icon-bar"></span>
+                    <span class=" icon-bar"></span>
+                    <span class=" icon-bar"></span>
+                </button>
+                <a href="#" class=" navbar-brand">麦子后台管理</a>
+            </div>
+
+            <div class=" collapse navbar-collapse">
+                <ul class=" nav navbar-nav navbar-left">
+                    <li><a href="/"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;后台首页</a></li>
+                    <li class=" active"><a href="/user"><span
+                                class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;用户管理</a></li>
+                    <li><a href="content.html"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;内容管理</a>
+                    </li>
+                    <li><a href="tag.html"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;标签管理</a></li>
+                </ul>
+                <ul class=" nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="true">
+                            admin
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="bootstrap后台管理.html">前台首页</a></li>
+                            <li><a href="bootstrap后台管理.html">个人主页</a></li>
+                            <li><a href="bootstrap后台管理.html">个人设置</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="bootstrap后台管理.html">账户中心</a></li>
+                            <li><a href="bootstrap后台管理.html">我的收藏</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class=" container">
+        <div class=" row">
+            <div class=" col-md-2">
+                <div class=" list-group">
+                    <a class=" list-group-item active" href="/">用户管理</a>
+                    <a class=" list-group-item" href="user-search.html">用户搜索</a>
+                    <a class=" list-group-item" href="/userAdd">用户添加</a>
+                </div>
+            </div>
+            <div class=" col-md-10">
+                <div class="page-header">
+                    <h1>用户管理</h1>
+                </div>
+                <ul class=" nav nav-tabs">
+                    <li class=" active">
+                        <a href="user.html">用户列表</a>
+                    </li>
+                    <li><a href="user.html">商品列表</a></li>
+                </ul>
+                <table class=" table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>用户名</th>
+                            <th>性别</th>
+                            <th>邮箱</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{ each User}}
+                        <tr>
+                            <th>{{ $value.id }}</th>
+                            <td>{{ $value.name }}</td>
+                            <td>{{ $value.sex }}</td>
+                            <td>{{ $value.email }}</td>
+                            <td>
+                                <div role="presentation" class="dropdown">
+                                    <button class=" btn btn-default dropdown-toggle" data-toggle="dropdown" href="#"
+                                        role="button" aria-haspopup="true" aria-expanded="false">
+                                        操作 <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/edit?id={{ $value.id }}">编辑</a></li>
+                                        <li><a href="/delete?id={{ $value.id }}">删除</a></li>
+                                        <li><a href="#">锁定</a></li>
+                                        <li><a href="#">修改密码</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        {{ /each }}
+                    </tbody>
+                </table>
+                <nav class=" pull-right">
+                    <ul class="pagination">
+                        <li class=" disabled"><a href="#" aria-label=" Previous"><span
+                                    aria-hidden="true">&laquo;</span></a></li>
+                        <li class=" active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li class=" disabled"><a href="#" aria-label=" Previous"><span
+                                    aria-hidden="true">&raquo;</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">添加用户</h4>
+                </div>
+                <form action="/user.html" method="POST">
+                    <div class="modal-body">
+                        <div class=" form-group">
+                            <label for="nameAdd">用户名</label>
+                            <input type="text" class=" form-control" name='name' placeholder="请输入用户名">
+                        </div>
+                        <div class="radio form-group">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="0" checked>
+                                男
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="1">
+                                女
+                            </label>
+                        </div>
+                        <div class=" form-group">
+                            <label for="emailAdd">邮箱</label>
+                            <input type="email" class=" form-control" name='email' placeholder="请输入邮箱">
+                        </div>
+                        <!-- <div class=" form-group">
+                            <label for="user-group">选择用户组</label>
+                            <select class=" form-control" id="user-group">
+                                <option>限制会员</option>
+                                <option>新手上路</option>
+                                <option>注册会员</option>
+                                <option>中级会员</option>
+                                <option>高级会员</option>
+                            </select>
+                        </div> -->
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary">保存</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</body>
+
+</html>

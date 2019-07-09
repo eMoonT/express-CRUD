@@ -1,0 +1,61 @@
+
+.alert-danger {
+    margin-top: 60px;
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+.pt-20 {
+    padding-bottom: 20px;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-top: 70px;
+}
+
+.progress {
+    margin-bottom: 15px;
+}
+
+.wh64 {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+}
+
+.bt10 {
+    margin-top: 10px;
+}
+
+
+/* user page start */
+
+.page-header {
+    margin-top: 0;
+}
+
+.page-header h1 {
+    font-size: 16px;
+    margin: 0;
+}
+
+.search-user {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-top: none;
+}
+
+.tag-list {
+    padding-top: 15px
+}
+
+.tag-list .alert {
+    margin: 0 10px 10px 0;
+}
+
+.pd0 {
+    padding-left: 0;
+}

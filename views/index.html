@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>后台管理</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/Chart.min.js"></script>
+    <!-- <script src="js/chartz.js"></script> -->
+
+</head>
+
+<body>
+
+    <nav class=" navbar-default navbar-fixed-top">
+        <div class=" container">
+            <div class=" navbar-header">
+                <button class=" navbar-toggle" data-toggle="collapse" data-target=" .navbar-collapse">
+                    <span class=" icon-bar"></span>
+                    <span class=" icon-bar"></span>
+                    <span class=" icon-bar"></span>
+                </button>
+                <a href="#" class=" navbar-brand">麦子后台管理</a>
+            </div>
+
+            <div class=" collapse navbar-collapse">
+                <ul class=" nav navbar-nav navbar-left">
+                    <li class=" active"><a href="/"><span
+                                class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;后台首页</a></li>
+                    <li><a href="/user"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;用户管理</a></li>
+                    <li><a href="content.html"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;内容管理</a>
+                    </li>
+                    <li><a href="tag.html"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;标签管理</a></li>
+                </ul>
+                <ul class=" nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="true">
+                            admin
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="bootstrap后台管理.html">前台首页</a></li>
+                            <li><a href="bootstrap后台管理.html">个人主页</a></li>
+                            <li><a href="bootstrap后台管理.html">个人设置</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="bootstrap后台管理.html">账户中心</a></li>
+                            <li><a href="bootstrap后台管理.html">我的收藏</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class=" container">
+        <div class=" row">
+            <div class=" col-md-12">
+                <div class="alert alert-danger alert-dismissible fade in">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden='true'>x</span>
+                    </button>
+                    <h4>Oh snap yuo</h4>
+                    <p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor
+                        ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
+                    <button type="button" class="btn btn-danger">立即修复</button>
+                    <button type="button" class="btn btn-default" data-dismiss="alert">稍后处理</button>
+                </div>
+            </div>
+            <div class=" col-md-6">
+                <div class=" panel panel-default pt-20">
+                    <div class=" panel-heading">网站信息统计</div>
+                    <div class=" panel-body">
+                        <table class=" table table-hover">
+                            <thead>
+                                <th>统计项目</th>
+                                <th>昨日</th>
+                                <th>今日</th>
+                            </thead>
+                            <tbody>
+                                {{ each infoAdmin }}
+                                <tr>
+                                        <th>{{ $value }}</th>
+                                        <td>300</td>
+                                        <td>2000</td>
+                                 </tr>
+                                {{ /each }}
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class=" col-md-6">
+                <div class=" panel panel-default">
+                    <div class=" panel-heading">网站热帖</div>
+                    <div class=" panel-body">
+                        <ul class=" list-group">
+                            {{ each hot}}
+                            <li class=" list-group-item">
+                                    <a href="#"><span
+                                            class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;{{ $value }}<small
+                                            class=" pull-right">2019-06-12</small></a>
+                                </li>
+                            {{ /each}}
+                            
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" row">
+            <div class=" col-md-6">
+                <div class=" panel panel-default">
+                    <div class=" panel-heading">今日访客统计</div>
+                    <div class=" panel-body">
+                        <canvas id="myChart" class=" col-md-12"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class=" col-md-6">
+                <div class=" panel panel-default">
+                    <div class=" panel-heading">服务器状态</div>
+                    <div class=" panel-body">
+                        <p>内存使用率：40%</p>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+                                aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                <span class="sr-only">40% Complete (success)</span>
+                            </div>
+                        </div>
+                        <p>数据路使用率：20%</p>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+                                aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                <span class="sr-only">20% Complete</span>
+                            </div>
+                        </div>
+                        <p>磁盘使用率：60%</p>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar"
+                                aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                <span class="sr-only">60% Complete (warning)</span>
+                            </div>
+                        </div>
+                        <p>CPU使用率：80%</p>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar"
+                                aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                <span class="sr-only">80% Complete (danger)</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" row">
+            <div class=" col-md-12">
+                <div class=" panel panel-default">
+                    <div class=" panel-heading">团队留言板</div>
+                    <div class=" panel-body">
+                        <div class=" col-md-7">
+                            <div class="media well">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object wh64" src="../mypro1/images/bili.png" alt="...">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">卓大哥</h4>
+                                    技术大哥，今晚把网站程序升级一下，现在的系统有漏洞
+                                </div>
+                            </div>
+                            <div class="media well">
+                                <div class="media-body text-right">
+                                    <h4 class="media-heading">技术王</h4>
+                                    收到，今晚凌晨2点准时升级
+                                </div>
+                                <div class="media-right">
+                                    <a href="#">
+                                        <img class="media-object wh64" src="../mypro1/images/bili.png" alt="...">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="media well">
+                                <div class="media-body text-right">
+                                    <h4 class="media-heading">技术王</h4>
+                                    你现在站点发布通知一下
+                                </div>
+                                <div class="media-right">
+                                    <a href="#">
+                                        <img class="media-object wh64" src="../mypro1/images/bili.png" alt="...">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="media well">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object wh64" src="../mypro1/images/bili.png" alt="...">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">卓大哥</h4>
+                                    好勒！
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" col-md-5">
+                            <form action="#">
+                                <div class=" form-group">
+                                    <label for="text1">输入留言内容</label>
+                                    <textarea class="form-control" id="text1" cols="5" rows="6"
+                                        placeholder="请输入留言内容"></textarea>
+                                    <button type="submit" class=" btn btn-default bt10">留言</button>
+                                </div>
+                            </form>
+                            <div class=" panel panel-default">
+                                <div class=" panel-heading">团队联系手册</div>
+                                <div class=" panel-body">
+                                    <ul class=" list-group">
+                                        <li class=" list-group-item"><a href="#">站长(李小龙):  13184486615</a></li>
+                                        <li class=" list-group-item"><a href="#">站长(李小龙):  13184486615</a></li>
+                                        <li class=" list-group-item"><a href="#">站长(李小龙):  13184486615</a></li>
+                                        <li class=" list-group-item"><a href="#">站长(李小龙):  13184486615</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        //同样数据参数设置
+        var data = {
+            //折线图需要为每个数据点设置一标签。这是显示在X轴上。
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            //这边的thisId分别对应labels的id
+            thisIds: [12, 22, 50, 44, 99, 3, 67],
+            //数据集（y轴数据范围随数据集合中的data中的最大或最小数据而动态改变的）
+            datasets: [{
+                label: '昨天',
+                backgroundColor: "#00f", //背景填充色
+                strokeColor: "rgba(220,220,220,1)", //路径颜色
+                pointColor: "rgba(220,220,220,1)", //数据点颜色
+                pointStrokeColor: "#fff", //数据点边框颜色
+                data: [10, 59, 90, 81, 56, 55, 40] //对象数据
+            }, {
+                label: '今天',
+                backgroundColor: "rgba(151,112,205,0.5)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                data: [28, 48, 40, 19, 96, 27, 200]
+            }]
+
+        };
+        var options = {
+
+            title: {
+                display: true,
+                // text: 'Custom Chart Title'
+            }
+        }
+        window.onload = function () {
+            var ctx = document.getElementById("myChart").getContext("2d");
+            //方式二：传入对象字面量去修改默认图标参数，自定义图表
+            var myLineChart = new Chart(ctx, {
+                type: 'line',
+                data: data,
+                options: options
+            });
+        }
+    </script>
+</body>
+
+</html>
