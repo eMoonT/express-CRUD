@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <form action="/axios" method="POST">
+    用户名<input type="text" id="username" name="username" value="123">
+    密码<input type="text" id="password" name="password" value="">
+    <input onclick="run()" type="submit">
+  </form>
+</body>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+  function run() {
+    var username = document.getElementById('username').value
+    var password = document.getElementById('password').value
+
+    axios.get('/axios?ID=12345')
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    // 上面的请求也可以这样做
+    axios.get('/axios', {
+        params: {
+          ID: 12345
+        }
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+</script>
+
+</html>

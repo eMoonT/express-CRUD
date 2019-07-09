@@ -5,6 +5,14 @@ const user = require('./adminAPI')
 // 创建一个路由容器
 const router = express.Router()
 
+router.get('/axios', async (req, res) => {
+  res.render('axios.html')
+})
+
+router.post('/axios', async (req, res) => {
+  console.log(req.body)
+})
+
 // 将路由挂载到路由容器中
 router.get('/', (req, res) => {
   res.render('index.html', {
